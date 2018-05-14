@@ -1,5 +1,23 @@
+// Settings
 var validTag = 'is-valid';
 var invalidTag = 'is-invalid';
+
+// Element associations
+var fullNameInput = document.getElementById('fullname');
+fullNameInput.addEventListener('keyup', validateFullName);
+
+var emailInput = document.getElementById('email');
+emailInput.addEventListener('keyup', validateEmail);
+
+var mobileInput = document.getElementById('mobile');
+mobileInput.addEventListener('keyup', validateMobile);
+
+var messageInput = document.getElementById('message');
+
+var contactForm = document.getElementById('contact-form');
+contactForm.addEventListener('submit', submitForm);
+
+var resultsMsg = document.getElementById('results');
 
 function validateFullName(event) {
   var fullNameInput = event.target;
@@ -53,19 +71,13 @@ function validateMobile(event) {
   }
 }
 
-function submitForm() {
-  alert("Success!");
+function submitForm(event) {
+  event.preventDefault();
+  var values = {
+    name: fullNameInput.value,
+    email: emailInput.value,
+    mobile: mobileInput.value,
+    message: messageInput.value
+  };
+  results.innerHTML = '<pre>' + JSON.stringify(values, null, 2) + '</pre>';
 }
-
-// Element associations
-var fullNameInput = document.getElementById('fullname');
-fullNameInput.addEventListener('keyup', validateFullName);
-
-var emailInput = document.getElementById('email');
-emailInput.addEventListener('keyup', validateEmail);
-
-var mobileInput = document.getElementById('mobile');
-mobileInput.addEventListener('keyup', validateMobile);
-
-var submitBtn = document.getElementById('submit-contact');
-submitBtn.addEventListener('click', submitForm);

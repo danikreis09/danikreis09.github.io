@@ -1,3 +1,41 @@
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 800px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 10px 18px 16px 10px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.my-blue-bg {
+  background-color: DodgerBlue;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -10;
+}
+
+.big-text {
+  font-size:200px ;
+}
+
+.big-icon {
+   font-size:125px ;
+}
+
 .invisible {
   opacity: 0;
 }
