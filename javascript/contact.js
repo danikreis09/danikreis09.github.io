@@ -85,6 +85,7 @@ function resetForm(event) {
 
 function submitForm(event) {
   event.preventDefault();
+  var counter = 0;
   var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   var values = {
     name: fullNameInput.value || '',
@@ -96,36 +97,48 @@ function submitForm(event) {
   results.innerHTML = "";
   if (values.name === "" && values.email === "" && values.mobile === "" && values.message === "") {
     results.innerHTML += 'Please, you must fill in some information<br>';
+    counter = counter + 1;
   } else {
     if (values.name === "") {
       results.innerHTML += 'Please, include your name.<br>';
+      counter = counter + 1;
     } else {
       if (!(values.name.split(" ").length > 1)) {
         results.innerHTML += "Your name is not okay.<br>";
+        counter = counter + 1;
       }
     } //-------------------------------------------------------------
     if (values.email === "") {
       results.innerHTML += "Please check the email data.<br>";
+      counter = counter + 1;
     } else {
       if (!(re.test(String(values.email).toLowerCase()))) {
         results.innerHTML += "Email is not correct.<br>";
+        counter = counter + 1;
       }
     }
     //-----------------------------------------------------------------------
     if (values.mobile === "") {
       results.innerHTML += "Please check the number.<br>";
+      counter = counter + 1;
     } else {
       if (!(/^\+?[0-9]*$/.test(values.mobile))) {
         results.innerHTML += "Your mobile is not okay.<br>";
+        counter = counter + 1;
       }
     }
     //-----------------------------------------------------------------
     if (values.message === "") {
       results.innerHTML += "Please check the mensage.<br>";
+      counter = counter + 1;
     } else {
       if (!(values.message.split(" ").length > 6)) {
         results.innerHTML += "Your message is not okay.<br>";
+        counter = counter + 1;
       }
     }
   }
+  if (counter === 0) (
+    results.classList.add(hideTag);
+  )
 }
