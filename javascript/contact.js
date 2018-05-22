@@ -20,6 +20,7 @@ contactForm.addEventListener('submit', submitForm);
 contactForm.addEventListener('reset', resetForm);
 
 var results = document.getElementById('results');
+var resultsOk = document.getElementById('results-ok');
 
 function validateFullName(event) {
   var fullNameInput = event.target;
@@ -75,6 +76,7 @@ function validateMobile(event) {
 
 function resetForm(event) {
   results.classList.add(hideTag);
+  resultsOk.classList.add(hideTag);
   fullNameInput.classList.remove(invalidTag);
   fullNameInput.classList.remove(validTag);
   emailInput.classList.remove(invalidTag);
@@ -94,6 +96,7 @@ function submitForm(event) {
     message: messageInput.value
   };
   results.classList.remove(hideTag);
+  resultsOk.classList.add(hideTag);
   results.innerHTML = "";
   if (values.name === "" && values.email === "" && values.mobile === "" && values.message === "") {
     results.innerHTML += 'Please, you must fill in some information<br>';
@@ -138,7 +141,10 @@ function submitForm(event) {
       }
     }
   }
-  if (counter === 0) (
+
+  if (counter === 0) {
     results.classList.add(hideTag);
-  )
+    resultsOk.classList.remove(hideTag);
+    resultsOk.innerHTML = 'Thank you for your contact, we will answer shortly ! :)';
+  }
 }
