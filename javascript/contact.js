@@ -135,7 +135,7 @@ function submitForm(event) {
       results.innerHTML += "Please check the mensage.<br>";
       counter = counter + 1;
     } else {
-      if (!(values.message.split(" ").length > 6)) {
+      if (!(values.message.split(" ").length > 4)) {
         results.innerHTML += "Your message is not okay.<br>";
         counter = counter + 1;
       }
